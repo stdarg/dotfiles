@@ -13,7 +13,8 @@ alias path='echo -e ${PATH//:/\\n}'
 alias printn='/usr/bin/lp -o nobanner -d $LPDEST'   # Assumes LPDEST is defined
 alias pjet='enscript -h -G -fCourier9 -d $LPDEST'  # Pretty-print using enscript
 alias du='du -kh'
-alias df='df -kTh'
+# alias df='df -kTh'
+alias df='cd ~/src/dotfiles'
 
 # The 'ls' family (this assumes you use the GNU ls)
 alias la='ls -AlG'          # show hidden files
@@ -94,18 +95,3 @@ function fvi()   { find . -name "$@" -exec vi \{\} \; ; }
 function pjson() { echo $@ | python -m json.tool ; }
 function vijs()  { vi `grep -nr "$@" *.js  | cut -d: -f1 | sort -u` ; }
 function vipy()  { vi `grep -nr "$@" *.py  | cut -d: -f1 | sort -u` ; }
-
-
-
-removecontainers() {
-    docker stop $(docker ps -aq)
-    docker rm $(docker ps -aq)
-}
-
-armageddon() {
-    removecontainers
-    docker network prune -f
-    docker rmi -f $(docker images --filter dangling=true -qa)
-    docker volume rm $(docker volume ls --filter dangling=true -q)
-    docker rmi -f $(docker images -qa)
-}

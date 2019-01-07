@@ -9,7 +9,7 @@ then
     __GIT_PROMPT_DIR="/usr/local/opt/bash-git-prompt/share"
     GIT_PROMPT_THEME=Solarized
     GIT_PROMPT_START="${YELLOW}arceo ${WHITE}\w${DEFAULT}"
-    GIT_PROMPT_END=" ${RED}$ ${DEFAULT}"
+    GIT_PROMPT_END=" ${RED}\$${DEFAULT} "
     source "/usr/local/opt/bash-git-prompt/share/gitprompt.sh"
 else
     echo "bash-git-prompt is not installed, please install it."

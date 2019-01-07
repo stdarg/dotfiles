@@ -13,7 +13,7 @@ HISTFILESIZE=2000
 if [ -f /usr/bin/vim ]
 then
     export GIT_EDITOR=/usr/bin/vim
-
+fi
 
 if [ -f /usr/local/bin/vim ]
 then
