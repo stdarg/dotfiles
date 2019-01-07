@@ -9,15 +9,15 @@ export DOT_FILES_DIR="~/src/dotfiles"
 shopt -s checkwinsize
 
 # load environment variables
-if [ -f ${DOT_FILES_DIR}/.bash_aliases ]
+if [ -f ${DOT_FILES_DIR}/.bash_env.sh ]
 then
-    . ${DOT_FILES_DIR}/.bash_aliases
+    . ${DOT_FILES_DIR}/.bash_env.sh
 fi
 
 # load aliases
-if [ -f ${DOT_FILES_DIR}/.bash_aliases ]
+if [ -f ${DOT_FILES_DIR}/.bash_aliases.sh ]
 then
-    . ${DOT_FILES_DIR}/.bash_aliases
+    . ${DOT_FILES_DIR}/.bash_aliases.sh
 fi
 
 # load colors
