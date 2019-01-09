@@ -29,7 +29,7 @@ then
 fi
 
 # load work-specific stuff
-if [ -f ${DOT_FILES_DIR}/.bash_work.sh ]
+if [ -f ${DOT_FILES_DIR}/bash_work.sh ]
 then
     source ${DOT_FILES_DIR}/bash_work.sh
 fi
