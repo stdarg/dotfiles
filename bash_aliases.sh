@@ -1,10 +1,17 @@
 # Some useful aliases.
 
+HOST_TYPE=`uname`
+VIM=/usr/local/bin/vim
+if [ ${HOST_TYPE} = "Linux" ]
+then
+    VIM=/usr/bin/vim
+fi
+
 alias s="git status -s"
 alias sp='source ~/.profile'
 alias sb='source ~/.bashrc'
-alias vb='vi ~/src/dotfiles/bashrc.sh'
-alias vp='vi ~/.profile'
+alias vb='${VIM} ~/src/dotfiles/bashrc.sh'
+alias vp='${VIM} ~/.profile'
 alias mkdir='mkdir -p'
 alias h='history'
 alias j='jobs -l'
@@ -85,13 +92,13 @@ function grepjs() {
     find . \( -name node_modules -prune \) -o -name "*.js" -exec grep --color -Hn "$@" {} 2>/dev/null \;
 }
 
-function vi()    { echo -e "\033];$@\007"; /usr/local/bin/vim $@; echo -e "\033];\007"; }
-function vp()    { vi `grep "$@" * | cut -f1 -d: | sort -u`; }
-function vcpp()  { vi `grep "$@" *.cpp *.h | cut -f1 -d: | sort -u`; }
-function vjs()   { vi `grep "$@" *.js | cut -f1 -d: | sort -u`; }
-function vp2()   { vi `grep "$@" *.php *.inc | cut -f1 -d: | sort -u`; }
+function vi()    { echo -e "\033];$@\007"; ${VIM} $@; echo -e "\033];\007"; }
+function vp()    { ${VIM} `grep "$@" * | cut -f1 -d: | sort -u`; }
+function vcpp()  { ${VIM} `grep "$@" *.cpp *.h | cut -f1 -d: | sort -u`; }
+function vjs()   { ${VIM} `grep "$@" *.js | cut -f1 -d: | sort -u`; }
+function vp2()   { ${VIM} `grep "$@" *.php *.inc | cut -f1 -d: | sort -u`; }
 function rgrep   { find . -exec grep -iHn "$@" \{\} \;; }
-function fvi()   { find . -name "$@" -exec vi \{\} \; ; }
+function fvi()   { find . -name "$@" -exec ${VIM} \{\} \; ; }
 function pjson() { echo $@ | python -m json.tool ; }
-function vijs()  { vi `grep -nr "$@" *.js  | cut -d: -f1 | sort -u` ; }
-function vipy()  { vi `grep -nr "$@" *.py  | cut -d: -f1 | sort -u` ; }
+function vijs()  { ${VIM} `grep -nr "$@" *.js  | cut -d: -f1 | sort -u` ; }
+function vipy()  { ${VIM} `grep -nr "$@" *.py  | cut -d: -f1 | sort -u` ; }
