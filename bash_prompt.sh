@@ -2,15 +2,18 @@ WHITE="\[\e[97m\]"
 RED="\[\e[91m\]"
 YELLOW="\[\e[93m\]"
 DEFAULT="\[\e[39m\]"
-# GIT_PROMPT_START="${WHITE}\W ${YELLOW}`date +\"%H:%M:%S\"`${DEFAULT}"
 
-if [ -f "/usr/local/opt/bash-git-prompt/share/gitprompt.sh" ]
+GIT_PROMPT_ONLY_IN_REPO=1
+GIT_PROMPT_THEME=Solarized
+GIT_PROMPT_START="${YELLOW}${USER} ${WHITE}\w${DEFAULT}"
+GIT_PROMPT_END=" ${RED}\$${DEFAULT} "
+__GIT_PROMPT_DIR=${HOME}/.bash-git-prompt
+GIT_PROMPT_SH=${__GIT_PROMPT_DIR}/gitprompt.sh
+
+if [ -f ${GIT_PROMPT_SH} ]
 then
-    __GIT_PROMPT_DIR="/usr/local/opt/bash-git-prompt/share"
-    GIT_PROMPT_THEME=Solarized
-    GIT_PROMPT_START="${YELLOW}arceo ${WHITE}\w${DEFAULT}"
-    GIT_PROMPT_END=" ${RED}\$${DEFAULT} "
-    source "/usr/local/opt/bash-git-prompt/share/gitprompt.sh"
+    source ${GIT_PROMPT_SH}
 else
     echo "bash-git-prompt is not installed, please install it."
+    echo "see: https://github.com/magicmonty/bash-git-prompt#installation"
 fi
