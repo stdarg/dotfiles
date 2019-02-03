@@ -4,7 +4,7 @@
 # INTERACTIVE STUFF FOLLOWS
 
 # Must be fully qualified on OS X (not sure why yet)
-export DOT_FILES_DIR="/Users/edmondmeinfelder/src/dotfiles"
+export DOT_FILES_DIR="${HOME}/src/dotfiles"
 
 # check the window size after each command and, if necessary,
 # update the values of LINES and COLUMNS.
