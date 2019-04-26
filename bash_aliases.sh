@@ -7,6 +7,7 @@ then
     VIM=/usr/bin/vim
 fi
 
+alias rmorig="find . -name '*.orig' -delete"
 alias s="git status -s"
 alias sp='source ~/.profile'
 alias sb='source ~/.bashrc'
@@ -22,6 +23,7 @@ alias pjet='enscript -h -G -fCourier9 -d $LPDEST'  # Pretty-print using enscript
 alias du='du -kh'
 # alias df='df -kTh'
 alias df='cd ~/src/dotfiles'
+alias pytestcov='pytest --cov=quoter --cov-report html'
 
 # The 'ls' family (this assumes you use the GNU ls)
 alias la='ls -AlG'          # show hidden files
@@ -36,7 +38,7 @@ alias lm='ls -alG |more'    # pipe through 'more'
 alias tree='tree -Csu'      # nice alternative to 'ls'
 alias l='ls -hF -G'
 alias countjs="find . -name "*.js" -exec cat \{\} \; | wc -l"
-alias countpy="find . -name "*.py" -exec cat \{\} \; | wc -l"
+alias countpy="find . -path ./.tox -prune -o -name "*.py" -exec cat \{\} \; | wc -l"
 alias gh="open \`git remote -v | grep git@github.com | grep fetch | head -1 | cut -f2 | cut -d' ' -f1 | sed -e's/:/\//' -e 's/git@/http:\/\//'\`"
 
 # spelling typos - highly personal :-)
