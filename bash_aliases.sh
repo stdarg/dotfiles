@@ -79,20 +79,22 @@ function jscount() {
 }
 
 function pygrep() {
-    find . \( -name __pycache__ -prune \) -o -name "*.py" -exec grep --color -Hn "$@" {} 2>/dev/null \;
+    find . \( -name __pycache__ -prune \) \( -name .tox -prune \) -o -name "*.py" -exec grep --color -Hn "$@" {} 2>/dev/null \;
 }
 
 function jsgrep() {
     find . \( -name node_modules -prune \) -o -name "*.js" -exec grep --color -Hn "$@" {} 2>/dev/null \;
 }
 
-function javagrep() {
-    find . \( -name node_modules -prune \) -o -name "*.java" -exec grep --color -Hn "$@" {} 2>/dev/null \;
+function vjsp() {
+    FILES=`find . \( -name node_modules -prune \) -o -name "*.js" -exec grep -Hn "$@" {} 2>/dev/null \; | cut -f1 -d: | sort -u`
+    vim $FILES
 }
 
-function grepjs() {
-    find . \( -name node_modules -prune \) -o -name "*.js" -exec grep --color -Hn "$@" {} 2>/dev/null \;
+function jsp() {
+    echo `find . \( -name node_modules -prune \) -o -name "*.js" -exec grep -Hn "$@" {} 2>/dev/null \; | cut -f1 -d: | sort -u`
 }
+
 
 function vi()    { echo -e "\033];$@\007"; ${VIM} $@; echo -e "\033];\007"; }
 function vp()    { ${VIM} `grep "$@" * | cut -f1 -d: | sort -u`; }
