@@ -3,7 +3,7 @@
 
 # INTERACTIVE STUFF FOLLOWS
 
-# Must be fully qualified on OS X (not sure why yet)
+# Must be fully qualified on MacOS
 export DOT_FILES_DIR="${HOME}/src/dotfiles"
 
 # check the window size after each command and, if necessary,
@@ -42,6 +42,15 @@ fi
 
 # Bash completion
 [ -f /usr/local/etc/bash_completion ] && . /usr/local/etc/bash_completion
+
+# set up node env
+if [ -f /usr/local/bin/nodenv ]
+then
+    eval "$(nodenv init -)"
+    export PATH="$HOME/.nodenv/bin:$PATH"
+    export NODENV_VERSION=15.8.0
+    printf "Node version available is: $NODENV_VERSION\n\n"
+fi
 
 # Pithy fortune
 printf "\e[0;36m%s\e[0m\n" "`fortune`"
