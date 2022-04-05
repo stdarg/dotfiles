@@ -1,6 +1,9 @@
 # If not running interactively, don't do anything
 [ -z "$PS1" ] && return
 
+eval "$(/opt/homebrew/bin/brew shellenv)"
+eval "$(pyenv init --path)"
+
 # INTERACTIVE STUFF FOLLOWS
 
 # Must be fully qualified on MacOS
