@@ -1,7 +1,7 @@
 # Some useful aliases.
 
 HOST_TYPE=`uname`
-VIM=/usr/local/bin/vim
+VIM="/opt/homebrew/bin/vim"
 if [ ${HOST_TYPE} = "Linux" ]
 then
     VIM=/usr/bin/vim
